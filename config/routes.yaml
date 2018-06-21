@@ -1,3 +1,9 @@
+# Les routes définissent l'url de la page (path) et le controller à appeler 
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+app_lucky_number:
+    path: /lucky1
+    controller: App\Controller\Lucky1Controller::number
