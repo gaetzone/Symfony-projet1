@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Hello !{% endblock %}
 
 {% block body %}
 <style>
@@ -9,7 +9,7 @@
 </style>
 
 <div class="wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {% if controller_name is defined %}{{ controller_name }}{% endif %} ✅</h1>
 
     This friendly message is coming from:
     <ul>
@@ -23,5 +23,19 @@
 <div class="wrapper">
     Données json : {% if json_data is defined %}{{ json_data }}{% endif %}
 </div>
+<div class="wrapper">
+    Logger service : {% if message is defined %}{{ message }}{% endif %}
+</div>
 
+<div class="wrapper">
+Utilisation de fonction Twig : asset(), path(), ...
+</div>
+
+<div class="wrapper">
+    <img src="{{ asset('images/etoile-verte.jpg') }}" />
+</div>
+
+<div class="wrapper">
+    <a href="{{ path('lucky2_methode_index') }}">Home</a>
+</div>
 {% endblock %}

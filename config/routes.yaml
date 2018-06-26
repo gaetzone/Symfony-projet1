@@ -2,17 +2,27 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+lucky2_methode_index:
+  path: /
+  controller: App\Controller\Luck2Controller::index
+    
+    
 lucky2_methode_toto:
-  path:   /lucky2/{slug}  
+  path: /lucky2/{slug}  
   controller: App\Controller\Lucky2Controller::toto
 
 
 lucky2_methode_tata:
-  path:     /lucky2/{year}/{slug}.{_format}
+  path: /lucky2/{year}/{slug}.{_format}
   controller: App\Controller\Lucky2Controller::tata
   defaults:
       _format: html
   requirements:
       _format:  html|rss
       year:     \d+
+      
+
+lucky2_methode_number:
+  path: /lucky2/number/{max}  
+  controller: App\Controller\Lucky2Controller::number      
       

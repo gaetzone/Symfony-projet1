@@ -5,18 +5,38 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class Lucky2Controller extends Controller
 {
     /**
+     * Matches /*
+     * @Route("/", name="index")
+     */
+    public function index(Request $request)
+    {
+        echo 'Methode index()<br><br>';
+        
+        echo '$request = '.$request; echo '<br><br>';
+        
+        $response = new Response('Helloooooooo ', Response::HTTP_OK);
+        echo '$response = '.$response; echo '<br><br>';
+        
+        return $this->render('lucky2/index.html.twig', [
+                'controller_name' => 'Lucky2Controller',
+        ]);
+    }
+    
+    /**
      * Matches /lucky2/*
-     *
      * @Route("/lucky2/{slug}", name="lucky2_show")
      */
-    public function toto($slug = 'home')
+    public function toto(Request $request, $slug = 'home')
     {      
         // $slug = partie dynamique de l'URL (ex. pour /blog/aaa, $slug='aaa'
-        echo 'Methode toto()';
+        echo 'Methode toto()<br><br>';
         
         return $this->render('lucky2/index.html.twig', [
             'controller_name' => 'Lucky2Controller',
@@ -46,6 +66,20 @@ class Lucky2Controller extends Controller
             'year' => $year,
             'slug' => $slug,
             'json_data' => $json_data,
+        ]);
+    }
+    
+    /**
+     * @Route("/lucky2/number/{max}")
+     */
+    public function number($max, LoggerInterface $logger)
+    {
+        echo 'Methode number()';
+        
+        $message = $logger->info('We are logging!');
+        
+        return $this->render('lucky2/index.html.twig', [
+            'message' => $message,
         ]);
     }
 
