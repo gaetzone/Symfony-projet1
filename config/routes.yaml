@@ -2,10 +2,9 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-lucky2_methode_index:
-  path: /
-  controller: App\Controller\Luck2Controller::index
-    
+lucky2_methode_titi:
+  path: /                                                 # alias de l'url
+  controller: App\Controller\Luck2Controller::titi        # nom du controller et methode vers laquelle pointe l'url   
     
 lucky2_methode_toto:
   path: /lucky2/{slug}  
@@ -21,7 +20,6 @@ lucky2_methode_tata:
       _format:  html|rss
       year:     \d+
       
-
 lucky2_methode_number:
   path: /lucky2/number/{max}  
   controller: App\Controller\Lucky2Controller::number      

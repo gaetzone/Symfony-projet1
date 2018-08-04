@@ -12,12 +12,25 @@ use Symfony\Component\HttpFoundation\Request;
 class Lucky2Controller extends Controller
 {
     /**
-     * Matches /*
-     * @Route("/", name="index")
-     */
-    public function index(Request $request)
+    * @Route("/lucky/numberr")
+    */
+    public function toutou()
     {
-        echo 'Methode index()<br><br>';
+        echo 'Methode toutou()<br><br>';
+        
+        $number = random_int (0, 100);
+        
+        $response = new Response('<html><body>Lucky number: '.$number.'</body></html>');
+        return $response;
+    }
+    
+    /**
+     * Matches /*
+     * @Route("/", name="titi")
+     */
+    public function titi(Request $request)
+    {
+        echo 'Methode titi()<br><br>';
         
         echo '$request = '.$request; echo '<br><br>';
         
